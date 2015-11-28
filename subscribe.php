@@ -5,7 +5,7 @@ $data = array(
     'email_address'=>$_POST['email'],
     'apikey'=> 'YOUR MC API KEY',
     'id' => 'YOUR MC LIST ID',
-    'double_optin' => true,
+    'double_optin' => false,
     'send_welcome' => false,
     'email_type' => 'html'
 );
@@ -18,7 +18,21 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, urlencode($payload));
  
-$result = curl_exec($ch);
+$response = curl_exec($ch);
 curl_close ($ch);
 
-echo $result;
+$response = json_decode($response);
+
+if (!empty($response->error)) {
+    $result = [
+        'success' => false,
+        'msg' => $response->error
+    ];
+} else {
+    $result = [
+        'success' => true,
+        'msg' => 'Successfully registered'
+    ];
+}
+
+echo json_encode($result);

@@ -14,6 +14,7 @@ body {
     background-color: #508799;
     border-radius: 10px;
     padding: 10px;
+    padding-bottom: 20px;
 }
 
 #content {
@@ -40,15 +41,16 @@ body {
     height: 50%;
 }
 
-.subscribe-section {
+#subscribe-section {
     width: 100%;
     margin: 0 auto;
-    height: 61px;
+    height: 100%;
     text-align: center;
     padding-bottom: 20px;
+
 }
 
-.subscribe-section p {
+#subscribe-section p {
     font-family: 'IM Fell English', serif;
     margin-top: 0;
     font-size: 24px;
