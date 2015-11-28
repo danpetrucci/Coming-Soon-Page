@@ -16,13 +16,34 @@
                 twitter.com/railto <br />
                 https://ie.linkedin.com/in/markrailton <br />
             </div><br />
-            <div class="form">
+            <div class="subscribe-section">
                 <p>New site coming soon!</p>
-                <form class="subscribe">
-                    <input type='email' class="field" id='email' name='email' placeholder="Subscribe for updates" />
+                <form class="subscribe" id="subscribe-form">
+                    <input type='email' class="field" id='email' name='email' required placeholder="Subscribe for updates" />
                     <input type='submit' class="submit" value='subscribe' />
                 </form>
             </div>
         </div>
+        <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#subscribe-form').on('submit', function(e) {
+                    e.preventDefault();
+                    var formData = '';
+                    formData = {
+                        'email' : $('#email').val()
+                    }
+                    $.ajax({ url: '/subscribe.php', dataType: 'json', type: 'POST', data: formData,
+                        success: function(json) {
+                            if (json.true) {
+                                console.log('subscribed successfully');
+                            } else {
+                                console.log(json.error);
+                            };
+                        }
+                    });
+                })
+            });
+        </script>
     </body>
 </html>

@@ -40,7 +40,7 @@ body {
     height: 50%;
 }
 
-.form {
+.subscribe-section {
     width: 100%;
     margin: 0 auto;
     height: 61px;
@@ -48,7 +48,7 @@ body {
     padding-bottom: 20px;
 }
 
-.form p {
+.subscribe-section p {
     font-family: 'IM Fell English', serif;
     margin-top: 0;
     font-size: 24px;
