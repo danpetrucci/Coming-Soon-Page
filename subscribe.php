@@ -1,11 +1,12 @@
 <?php
 
 $submit_url = "http://us7.api.mailchimp.com/1.3/?method=listSubscribe";
+
 $data = array(
     'email_address'=>$_POST['email'],
     'apikey'=> 'YOUR MC API KEY',
     'id' => 'YOUR MC LIST ID',
-    'double_optin' => false,
+    'double_optin' => true,
     'send_welcome' => false,
     'email_type' => 'html'
 );
