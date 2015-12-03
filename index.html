@@ -18,13 +18,16 @@
             </div><br />
             <div id="subscribe-section">
                 <p>New site coming soon!</p>
-                <p id='register-success' hidden>
-                    Thank you for signing up to receive my newsletter.  I promsie I will not spam you.
-                </p>
-                <p id='register-failure' hidden >
-                    There was an error signing you up, please try again.
-                    <br />
-                </p>
+                <div id='register-success' hidden>
+                    <p>
+                        Thank you for signing up to receive my newsletter.  I promsie I will not spam you.
+                    </p>
+                </div>
+                <div id='register-failure' hidden>
+                    <p>
+                        There was an error signing you up, please try again.
+                    </p>
+                </div>
                 <form class="subscribe" id="subscribe-form">
                     <input type='email' class="field" id='email' name='email' required placeholder="Subscribe to newsletter" />
                     <input type='submit' class="submit" value='subscribe' />
@@ -33,27 +36,25 @@
         </div>
         <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
         <script>
-            $(document).ready(function() {
-                $('#subscribe-form').on('submit', function(e) {
-                    $("#register-failure").hide();
-                    $("#register-success").hide();
-                    e.preventDefault();
-                    var formData = {
-                        'email' : $('#email').val()
+            $('#subscribe-form').on('submit', function(e) {
+                $("#register-failure").hide();
+                $("#register-success").hide();
+                e.preventDefault();
+                var formData = {
+                    'email' : $('#email').val()
+                }
+                $.ajax({ url: '/subscribe.php', dataType: 'json', type: 'POST', data: formData,
+                    success: function(json) {
+                        if (json.success) {
+                            $("#subscribe-form").hide();
+                            $("#register-failure").hide();
+                            $("#register-success").show();
+                        } else {
+                            $("#register-failure").show();
+                        };
                     }
-                    $.ajax({ url: '/subscribe.php', dataType: 'json', type: 'POST', data: formData,
-                        success: function(json) {
-                            if (json.success) {
-                                $("#subscribe-form").hide();
-                                $("#register-failure").hide();
-                                $("#register-success").css({"color":"#29D961", "background":"white", "width":"600px","margin":"auto", "margin-bottom":"10px"}).show();
-                            } else {
-                                $("#register-failure").css({"color":"#C2062F", "background":"white", "width":"600px","margin":"auto", "margin-bottom":"10px"}).show();
-                            };
-                        }
-                    });
-                })
-            });
+                });
+            })
         </script>
     </body>
 </html>
