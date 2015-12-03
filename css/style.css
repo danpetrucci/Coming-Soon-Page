@@ -3,6 +3,7 @@ body {
     background: #3E5E69;
 }
 #container {
+    font-family: 'IM Fell English', serif;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -19,7 +20,6 @@ body {
 
 #content {
     color: #D3DFE3;
-    font-family: 'IM Fell English', serif;
     flex: 1;
     text-align: right;
     padding-right: 20px;
@@ -51,7 +51,6 @@ body {
 }
 
 #subscribe-section p {
-    font-family: 'IM Fell English', serif;
     margin-top: 0;
     font-size: 24px;
     color: #D3DFE3;
@@ -93,4 +92,20 @@ body {
     color: black;
     text-decoration: underline;
     cursor: pointer;
+}
+
+#register-success p {
+    color: #29D961; 
+    background: white; 
+    width: 600px;
+    margin: auto; 
+    margin-bottom: 10px;
+}
+
+#register-failure p {
+    color: #C2062F; 
+    background: white; 
+    width: 600px;
+    margin: auto; 
+    margin-bottom: 10px;
 }
